@@ -10,10 +10,13 @@ coordinates for valid IP addresses.
 This API takes in additional values that may be useful and could be added later.  They are currently not being accepted in this version.
 The API can also take in bulk IP addresses which could be useful.
 HTTPS is also a possibility if needed later.
+If you wanted to add this into a test suite you would want to add
+pytest and some test cases with a runner.
 
 Security of the API key:
-In this program the API key is stored in a separate file that should not generally be checked into a repository, but will be for the sake of this interview.
-A separate keyring module, vault (AWS Secrets Manager, Docker Secrets, etc), some other secure location.
+In this program the API key is stored in a separate file that should not generally be checked into a repository,
+It should be blank in the repository and then an API key filled in by the user, but will be filled in for the sake of this interview.
+A separate keyring module, vault (AWS Secrets Manager, Docker Secrets, etc), some other secure location would be best.
 
 ###Prerequisites:
 Before using this script, make sure you have the following prerequisites installed:
@@ -21,21 +24,31 @@ Before using this script, make sure you have the following prerequisites install
 Python 3.x: You can download and install Python from the official website.
 The requests library: You can install it using pip with the following command:
 pip install requests
+pip install keyring
 
-Docker: install the docker plugin for your IDE if using Docker
+To run docker from command line install docker plugin:
 pip install docker
 
-###Getting Started:
-Clone or download this repository to your local machine.
-Obtain an API key from IPStack by signing up at https://ipstack.com/. Replace the given test key with your own API key in the config file.
+###Getting Started for CLI:
+Clone or download this repository to your local machine using:
+git clone https://github.com/ssmiegowski/brightsign.git
+Obtain an API key from IPStack by signing up at https://ipstack.com/. Replace the given test key in config.json with your own API key in the config file (or use the one I sent but that's bad practice to pass around).
 
-###Usage
+###Usage for Python command line
 To use the script, open your terminal or command prompt and navigate to the directory where you have the script. Run the following command:
 
 python3 ipstack.py <Valid IP Address>
 Replace <Valid IP Address> with the IP address you want to look up.
 
+###Usage for Docker
+Install docker using "pip install docker"
+Pull image using "docker pull ssmiegowski/brightsign:latest"
+Run using "docker run docker-iptest <IP Address>"
+
 Examples of usage:
+(Please substitute "docker run docker-iptest" where there is python3
+if that is what you are running it with.
+
 python3 ipstack.py --help
 Usage: python3 ipstack.py <Valid IP Address>
 
